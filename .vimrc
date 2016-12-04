@@ -1,6 +1,14 @@
+""""""""""""""""""""""""""""""
+" global
+""""""""""""""""""""""""""""""
+
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+
+""""""""""""""""""""""""""""""
+" from template, clean up
+""""""""""""""""""""""""""""""
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -12,8 +20,6 @@ else
   set undofile		" keep an undo file (undo changes after closing)
 endif
 set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
@@ -42,6 +48,41 @@ if &t_Co > 2 || has("gui_running")
   " I like highlighting strings inside C comments.
   let c_comment_strings=1
 endif
+
+""""""""""""""""""""""""""""""
+" ui
+""""""""""""""""""""""""""""""
+
+set number          " show line numbers
+set ruler           " show cursor position
+set cmdheight=1     " command-bar height
+set showcmd         " display incomplete commands
+
+" no sound on error
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+""""""""""""""""""""""""""""""
+" files backup undo
+""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""
+" text tab indent
+""""""""""""""""""""""""""""""
+
+set expandtab
+" allow Tab and Shift+Tab to
+" tab  selection in visual mode
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+set shiftwidth=4    " when reading, tabs are 4 spaces
+set softtabstop=4   " in insert mode, tabs are 4 spaces
+set tabstop=4
+set smarttab
+set smartindent     " guess the indent level of new line
+set tw=80           " textwidth
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -90,18 +131,10 @@ if has('langmap') && exists('+langnoremap')
   set langnoremap
 endif
 
-set number
 set encoding=utf-8
 set fileencoding=utf-8
 set fileformat=unix
 set fileformats=unix,dos
-
-" allow Tab and Shift+Tab to
-" tab  selection in visual mode
-vmap <Tab> >gv
-vmap <S-Tab> <gv
-set shiftwidth=4    " when reading, tabs are 4 spaces
-set softtabstop=4   " in insert mode, tabs are 4 spaces
 
 " =========================
 " Vundle
